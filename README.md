@@ -60,7 +60,9 @@
 
 #### 3) Setup SSH-KEY on target (managed) nodes 
  a) ` # ssh-copy-id target` 
+
  b) ` # for ip in `cat /root/hostdetails` ; do ssh-copy-id -i ~/.ssh/id_rsa.pub $ip ; done				// loop per node - slower methos 
+
  c) ` # cat ~/.ssh/id_rsa.pub | pssh -A -h "hostdetails" -l root -I "cat >> ~/.ssh/authorized_keys" ` - // -A =askpass , -I = send-input -h = hostfile
 
 ```bash
