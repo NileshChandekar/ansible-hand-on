@@ -1,6 +1,6 @@
 ### Ansible Configuration Management ### 
 
-Features : 
+#### Features : 
  1) Single management Node - Unlimited number of managed nodes 
  2) Agent-less
   a) Note :An agent is available for improved communication : `fireball` 
