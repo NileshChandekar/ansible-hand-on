@@ -1,5 +1,6 @@
 ### Ansible Configuration Management ### 
 
+```bash
 #### Features : 
  1) Single management Node - Unlimited number of managed nodes 
  2) Agent-less
@@ -18,7 +19,7 @@
  9) Ansible does not run as a persistenet process , but rather , ad-hoc as needed. 
  NOTE : Ansible nature reflects a smaller footprint in that it does not need to run persitenently . 
 10) Intelligent `pssh` wrapper (parallel ssh)
-
+```
 
 ### Setup : Centos7-Ansible Management Node
 #### 1) Installtion : 
@@ -31,8 +32,8 @@
 	 ansible-doc-2.3.1.0-1.el7.noarch
 	 ansible-2.3.1.0-1.el7.noarch
 	 ~~~
-	 # ps -ef |grep ansible 																// Ansbile did not ran any process, On the fly process only. 
-	 # sudo ln -s /usr/share/doc/ansible-doc-2.3.1.0/ /var/www/html/ansible-doc 			// For offline ansbile documentation 
+	 # ps -ef |grep ansible // Ansbile did not ran any process, On the fly process only. 
+	 # sudo ln -s /usr/share/doc/ansible-doc-2.3.1.0/ /var/www/html/ansible-doc // For offline ansbile documentation 
 ```
 
 #### 2) Setup managed host - select subset of nodes to manage   || 2DB || 2 WEB || 
@@ -62,7 +63,7 @@
 ```bash
  a) ` # ssh-copy-id target` 
 
- b) ` # for ip in `cat /root/hostdetails` ; do ssh-copy-id -i ~/.ssh/id_rsa.pub $ip ; done				// loop per node - slower methos 
+ b) ` # for ip in `cat /root/hostdetails` ; do ssh-copy-id -i ~/.ssh/id_rsa.pub $ip ; done // loop per node - slower methos 
 
  c) ` # cat ~/.ssh/id_rsa.pub | pssh -A -h "hostdetails" -l root -I "cat >> ~/.ssh/authorized_keys" ` - // -A =askpass , -I = send-input -h = hostfile
 
@@ -77,17 +78,18 @@
 	192.168.122.45 
 	~~~
 
- d) ` # ssh root@192.168.122.40 ` 												// Lets try to SSH , expecting no password. Yahooo.....
+ d) ` # ssh root@192.168.122.40 ` // Lets try to SSH , expecting no password. Yahooo.....
 
- e) ` # pssh  -h "hostdetails" -l root -i "uptime" `  							// Lets to some basic check whether password-less authentication is working or not. 
+ e) ` # pssh  -h "hostdetails" -l root -i "uptime" ` // Lets to some basic check whether password-less authentication is working or not. 
 
- f) ` # pssh  -h "hostdetails" -l root -i "cat ~/.ssh/authorized_keys" ` 		// Lets Do some more test, check for authorized_keys copied or not. 
+ f) ` # pssh  -h "hostdetails" -l root -i "cat ~/.ssh/authorized_keys" ` // Lets Do some more test, check for authorized_keys copied or not. 
 ```
 ##### NOTE : Now the SSH keys are setup properly, now we can use ansible , good to go 
 
 ### 4) Ansible general usage : 
 ```bash 
  a) ` ansbile <pattern>(hostname | group | regex) [-m <module_name](default=commands) -a <argument> `
- NOTE : Why not simple use `pssh` for remote administartion, you can , however `pssh` lacks modules, with intelligence, to perform remote administartion. 
+
+#####  NOTE : Why not simple use `pssh` for remote administartion, you can , however `pssh` lacks modules, with intelligence, to perform remote administartion. 
 ```
 
