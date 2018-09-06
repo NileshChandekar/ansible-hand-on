@@ -36,7 +36,7 @@
 ```
 
 #### 2) Setup managed host - select subset of nodes to manage   || 2DB || 2 WEB || 
-'''bash
+```bash
 	 # sudo vi /etc/ansible/hosts 
 	~~~
 	 ansiblebuild[1:2]
