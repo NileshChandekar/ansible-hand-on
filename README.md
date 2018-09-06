@@ -76,15 +76,18 @@
 	192.168.122.44
 	192.168.122.45 
 	~~~
-```
-##### d) ` # ssh root@192.168.122.40 ` 												// Lets try to SSH , expecting no password. Yahooo.....
-##### e) ` # pssh  -h "hostdetails" -l root -i "uptime" `  							// Lets to some basic check whether password-less authentication is working or not. 
-##### f) ` # pssh  -h "hostdetails" -l root -i "cat ~/.ssh/authorized_keys" ` 		// Lets Do some more test, check for authorized_keys copied or not. 
 
- NOTE : Now the SSH keys are setup properly, now we can use ansible , good to go 
+ d) ` # ssh root@192.168.122.40 ` 												// Lets try to SSH , expecting no password. Yahooo.....
+
+ e) ` # pssh  -h "hostdetails" -l root -i "uptime" `  							// Lets to some basic check whether password-less authentication is working or not. 
+
+ f) ` # pssh  -h "hostdetails" -l root -i "cat ~/.ssh/authorized_keys" ` 		// Lets Do some more test, check for authorized_keys copied or not. 
+```
+##### NOTE : Now the SSH keys are setup properly, now we can use ansible , good to go 
 
 ### 4) Ansible general usage : 
+```bash 
  a) ` ansbile <pattern>(hostname | group | regex) [-m <module_name](default=commands) -a <argument> `
  NOTE : Why not simple use `pssh` for remote administartion, you can , however `pssh` lacks modules, with intelligence, to perform remote administartion. 
-
+```
 
